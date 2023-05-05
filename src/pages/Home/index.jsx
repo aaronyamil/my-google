@@ -1,12 +1,11 @@
+import "./Home.css"
 function Home() {
-
   return (
-    <>
-      <p >
-        Home
-      </p>
-    </>
-  )
+    <div className="container-home">
+      <img src="src/assets/google.png" width={200}/>
+      <input type="text" />
+    </div>
+  );
 }
 
-export default Home
+export default Home;

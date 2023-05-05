@@ -1,17 +1,33 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  env: { browser: true, es2020: true, 'jest/globals': true },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-    'plugin:jest/recommended',
-  ],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh', 'jest'],
-  rules: {
-    'react-refresh/only-export-components': 'warn',
+  env: {
+    browser: true,
+    es2021: true,
+    "jest/globals": true,
   },
-}
+  extends: [
+    "plugin:react/recommended",
+    "plugin:jest/recommended",
+    "airbnb",
+    "prettier",
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
+  plugins: ["react", "jest"],
+  rules: {
+    "no-underscore-dangle": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        js: "always",
+        jsx: "always",
+      },
+    ],
+  },
+};
