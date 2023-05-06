@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "../Home";
 import Search from "../Search";
 import NotFound from "../NotFound";
-import { HeaderHome } from "../../components/HeaderHome.jsx";
+import Layout from "../../components/Layout";
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -17,8 +17,9 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <HeaderHome />
-      <AppRoutes />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </BrowserRouter>
   );
 };
