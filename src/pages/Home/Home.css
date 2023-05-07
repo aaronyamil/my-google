@@ -26,10 +26,12 @@
 .text-search-container {
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 25px;
   width: 50%;
   margin-top: 20px;
+  max-width: 600px;
+  min-width: 300px;
 }
 
 .text-search-button {
@@ -54,10 +56,29 @@
 
 }
 
-/* .text-search-button:hover {
-  background-color: #2F70D5;
-} */
-
 .text-search-icon {
   margin-left: 5px;
+}
+
+.buscar-button {
+  background-color: lightgray;
+  border: 0;
+  width: 70px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1250px) {
+  .text-search {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    width: 70%;
+  }
+
+  .google-logo {
+    width: 200px;
+  }
 }
