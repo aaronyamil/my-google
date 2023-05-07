@@ -1,0 +1,33 @@
+.skeleton-blog {
+  margin-bottom: 50px;
+  animation: scale 4s infinite;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 100px;
+  border-radius: 6px;
+  background: #E5E4E2;
+  margin-top: 10px;
+}
+
+.skeleton-body {
+  height: 25px;
+  width: 400px;
+  border-radius: 6px;
+  background: #E5E4E2;
+  margin-top: 10px;
+}
+
+.skeleton-footer {
+  height: 30px;
+  width: 500px;
+  border-radius: 6px;
+  background: #E5E4E2;
+  margin-top: 10px;
+}
+
+@keyframes scale {
+  0% {transform: scale(1)}
+  100% {transform: scale(0.9)}
+}
