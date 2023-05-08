@@ -14,14 +14,14 @@ function Search() {
 
   useEffect(() => {
     if (context.valueSearch) {
-      setLoading(true)
+      setLoading(true);
       GetInformation(context.valueSearch, setData, setLoading);
     } else setData([]);
   }, [context.valueSearch]);
   return (
     <div className="container-search">
       {loading &&
-        data.length === 0 &&
+        (data && data.length) === 0 &&
         [1, 2, 3, 4].map((n) => <Skeleton key={n} />)}
       {data && data.length > 0 && (
         <div className="container-response">
@@ -39,12 +39,12 @@ function Search() {
 
           {itemSelected !== null && (
             <div className="search-more-details">
-              <CardData item={itemSelected} setItemSelected={setItemSelected}/>
+              <CardData item={itemSelected} setItemSelected={setItemSelected} />
             </div>
           )}
         </div>
       )}
-      {data === null && (
+      {(data === null || data.length === 0) && (
         <div className="container-no-results">
           {context.valueSearch !== "" && (
             <p>
