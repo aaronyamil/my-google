@@ -1,6 +1,9 @@
 # my-google
 Frontend test
 
+# URL 
+Hice deploy del sitio web en netlify y tengo la URL: https://sweet-lebkuchen-dd1be7.netlify.app/
+
 ### Features
 
 - La fake API que use es de recetas de comida, es rápida y tiene una imagen de la comida. https://www.themealdb.com/api.php
