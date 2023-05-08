@@ -4,6 +4,7 @@ import Home from "../Home";
 import Search from "../Search";
 import NotFound from "../NotFound";
 import Layout from "../../components/Layout";
+import { SearchValueProvider } from "../../context";
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -16,11 +17,13 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Layout>
-        <AppRoutes />
-      </Layout>
-    </BrowserRouter>
+    <SearchValueProvider>
+      <BrowserRouter>
+        <Layout>
+          <AppRoutes />
+        </Layout>
+      </BrowserRouter>
+    </SearchValueProvider>
   );
 };
 
