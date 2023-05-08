@@ -69,7 +69,7 @@
   margin-top: 20px;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 767px) {
   .text-search {
     padding: 10px;
     border: none;
@@ -79,6 +79,6 @@
   }
 
   .google-logo {
-    width: 200px;
+    width: 100px;
   }
 }

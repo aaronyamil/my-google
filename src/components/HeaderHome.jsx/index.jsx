@@ -3,32 +3,33 @@ import "./HeaderHome.css";
 import { SecondMenuIcon } from "../../assets/SecondMenuIcon.jsx";
 import { CancelIcon } from "../../assets/CancelIcon";
 import { SearchIcon } from "../../assets/SearchIcon";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { SearchValueContext } from "../../context";
 
 export const HeaderHome = () => {
   const currentLocation = useLocation();
-  const [value, setValue] = useState(currentLocation.state?.value || "");
+  const context = useContext(SearchValueContext);
+
   const handleChange = (e) => {
-    setValue(e.target.value);
+    context.setValueSearch(e.target.value);
   };
   const handleCancel = () => {
-    setValue("");
+    context.setValueSearch("");
   };
 
-  useEffect(()=>{
-    setValue(currentLocation.state?.value || '')
-  },[currentLocation.state?.value])
-  console.log(currentLocation);
   return (
     <nav className="container">
       <ul className="header">
         {currentLocation?.pathname === "/search" ? (
           <li className="mini-search-container">
-            <img
-              src="src/assets/google.png"
-              width={100}
-              className="google-logo"
-            />
+            <NavLink to="/" className="title">
+              <img
+                src="src/assets/google.png"
+                width={100}
+                className="google-logo"
+              />
+            </NavLink>
+
             <div className="header-text-search-container">
               <button type="submit" className="header-text-search-button">
                 <SearchIcon className="header-text-search-icon" />
@@ -36,10 +37,10 @@ export const HeaderHome = () => {
               <input
                 type="text"
                 className="header-text-search"
-                value={value}
+                value={context.valueSearch}
                 onChange={handleChange}
               />
-              {value !== "" && (
+              {context.valueSearch !== "" && (
                 <button
                   type="submit"
                   className="header-text-cancel-button"
@@ -59,8 +60,8 @@ export const HeaderHome = () => {
         )}
       </ul>
       <ul className="header">
-        <li>
-          <SecondMenuIcon className="menu" />
+        <li className="menu">
+          <SecondMenuIcon  />
         </li>
         <li>
           <img

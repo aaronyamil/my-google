@@ -107,3 +107,44 @@ li {
   border-radius: 5px;
   margin-top: 20px;
 }
+
+@media (max-width: 767px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+  }
+
+  .header-text-search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 25px;
+    width: 50%;
+    max-width: 200px;
+    min-width: 150px;
+    margin-left: 15px;
+  }
+  .header-text-search {
+    padding: 2px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    width: 75%;
+  }
+  .menu{
+    display: none;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    display: block;
+    margin: 0px 0px;
+    position: relative;
+    height: 32px;
+    width: 32px;
+  }
+}

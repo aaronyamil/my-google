@@ -1,24 +1,24 @@
 import "./Home.css";
 import { SearchIcon } from "../../assets/SearchIcon";
 import { CancelIcon } from "../../assets/CancelIcon";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
+import { SearchValueContext } from "../../context";
 
 const Home = () => {
-  const [value, setValue] = useState("");
+  const context = useContext(SearchValueContext)
   const navigate = useNavigate();
 
   const handleCancel = () => {
-    setValue("");
+    context.setValueSearch("");
   };
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    context.setValueSearch(e.target.value);
   };
 
   const handleBuscar = () => {
-    console.log("buscar", value);
-    navigate("/search", { state: { value: value } });
+    navigate("/search", { state: { value: context.valueSearch } });
   };
 
   return (
@@ -26,16 +26,16 @@ const Home = () => {
       <div className="content-home">
         <img src="src/assets/google.png" width={300} className="google-logo" />
         <div className="text-search-container">
-          <button type="submit" className="text-search-button">
+          <div type="submit" className="text-search-button">
             <SearchIcon className="text-search-icon" />
-          </button>
+          </div>
           <input
             type="text"
             className="text-search"
-            value={value}
+            value={context.valueSearch}
             onChange={handleChange}
           />
-          {value !== "" && (
+          {context.valueSearch !== "" && (
             <button
               type="submit"
               className="text-cancel-button"
@@ -45,15 +45,14 @@ const Home = () => {
             </button>
           )}
         </div>
-        {value !== "" && (
-          <button
-            type="submit"
-            className="buscar-button"
-            onClick={handleBuscar}
-          >
-            Buscar
-          </button>
-        )}
+        <button
+          type="submit"
+          className="buscar-button"
+          onClick={handleBuscar}
+          disabled={context.valueSearch === ""}
+        >
+          Buscar
+        </button>
       </div>
     </div>
   );
