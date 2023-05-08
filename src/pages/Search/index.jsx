@@ -44,7 +44,7 @@ function Search() {
           )}
         </div>
       )}
-      {(data === null || data.length === 0) && (
+      {(data === null || data.length === 0 && !loading) && (
         <div className="container-no-results">
           {context.valueSearch !== "" && (
             <p>
