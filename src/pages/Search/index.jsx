@@ -1,51 +1,56 @@
-import { useLocation } from "react-router";
 import Skeleton from "../../components/Skeleton";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SearchDetail } from "../../components/SearchDetail";
+import { CardData } from "../../components/CardData";
+import "./Search.css";
+import { GetInformation } from "../../utils/GetInformation";
+import { SearchValueContext } from "../../context";
 
-function Search(props) {
-  const location = useLocation();
-  console.log(location.state);
-  const [loading, setLoading] = useState(true);
+function Search() {
+  const context = useContext(SearchValueContext);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [itemSelected, setItemSelected] = useState(null);
 
   useEffect(() => {
-    console.log("entro");
-    if (location?.state?.value) {
-      fetch(
-        "https://www.themealdb.com/api/json/v1/1/search.php?s=" +
-          location?.state?.value
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(
-              "Sorry, some error occurred while fetching your blogs."
-            );
-          }
-          return response.json();
-        })
-        .then((data) => {
-          setLoading(false);
-          // setError(false);
-          console.log("response", data);
-          setData(data.meals);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setError(true);
-        });
-    }
-  }, [location?.state?.value]);
+    if (context.valueSearch) {
+      setLoading(true)
+      GetInformation(context.valueSearch, setData, setLoading);
+    } else setData([]);
+  }, [context.valueSearch]);
   return (
     <div className="container-search">
-      {loading && [1, 2, 3, 4].map((n) => <Skeleton key={n} />)}
-      {data && data.length > 0 &&
-        data.map((item) => {
-          return <SearchDetail item={item} key={item.idMeal}/>;
-        })}
+      {loading &&
+        data.length === 0 &&
+        [1, 2, 3, 4].map((n) => <Skeleton key={n} />)}
+      {data && data.length > 0 && (
+        <div className="container-response">
+          <div>
+            {data.map((item) => {
+              return (
+                <SearchDetail
+                  item={item}
+                  key={item.idMeal}
+                  setItemSelected={setItemSelected}
+                />
+              );
+            })}
+          </div>
+
+          {itemSelected !== null && (
+            <div className="search-more-details">
+              <CardData item={itemSelected} setItemSelected={setItemSelected}/>
+            </div>
+          )}
+        </div>
+      )}
       {data === null && (
-        <div>
-          <p>No results found for <b>{location?.state?.value}</b></p>
+        <div className="container-no-results">
+          {context.valueSearch !== "" && (
+            <p>
+              No results found for <b>'{context.valueSearch}'</b>
+            </p>
+          )}
           <span>
             Try looking for: <b>eggs, turkey, chicken, rice, potato</b>
           </span>

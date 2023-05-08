@@ -1,0 +1,8 @@
+.container-response{
+  display: flex;
+  flex-direction: row;
+}
+
+.container-no-results {
+  margin: 20px 50px;
+}
