@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="container-home">
       <div className="content-home">
-        <img src="src/assets/google.png" width={300} className="google-logo" />
+        <img src="assets/google.png" width={300} className="google-logo" />
         <div className="text-search-container">
           <div type="submit" className="text-search-button">
             <SearchIcon className="text-search-icon" />

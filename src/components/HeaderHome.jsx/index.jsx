@@ -24,7 +24,7 @@ export const HeaderHome = () => {
           <li className="mini-search-container">
             <NavLink to="/" className="title">
               <img
-                src="src/assets/google.png"
+                src="assets/google.png"
                 width={100}
                 className="google-logo"
               />
